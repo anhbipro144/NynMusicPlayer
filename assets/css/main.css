@@ -39,12 +39,22 @@ body {
 }
 
 .header__title,
-.header__song-author {
+.header__song-author,
+.message {
   align-self: center;
   color: orange;
   z-index: 10;
   padding-top: 150px;
   position: absolute;
+}
+
+.message {
+  padding-top: 50px;
+  position: absolute;
+  top: 1%;
+  font-size: 2rem;
+  font-weight: 300;
+  font-family: "Praise", cursive;
 }
 
 .header__title {
