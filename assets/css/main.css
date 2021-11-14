@@ -1,15 +1,16 @@
 body,
-.body,
+.player,
 .header {
   display: flex;
   justify-content: center;
   align-content: center;
 }
 
+body {
+  background-color: orange;
+}
+
 .wrapper {
-  width: 400px;
-  height: 700px;
-  margin: 20px 0;
   display: flex;
   justify-content: space-around;
   align-content: center;
@@ -17,6 +18,9 @@ body,
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  width: 400px;
+  height: 700px;
+  margin: 20px 0;
   border-radius: 20px;
   box-shadow: 20px 20px 50px #333;
 }
@@ -57,4 +61,41 @@ body,
 .audio {
   margin-bottom: 100px;
   align-self: center;
+}
+
+/* Body */
+
+.player {
+  position: absolute;
+  top: 55%;
+  left: 0;
+  width: 100%;
+  height: 100px;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.player .icon-pause {
+  display: none;
+}
+
+.playing .icon-pause {
+  display: inline-block;
+}
+
+.playing .icon-play {
+  display: none;
+}
+
+.btn {
+  width: 30px;
+  height: 30px;
+  font-size: 3rem;
+  color: orange;
+}
+
+.prev-btn {
+  font-size: 3rem;
+  color: orange;
+  transform: rotate(180deg);
 }

@@ -13,26 +13,24 @@
     />
     <link
       rel="stylesheet"
-      href="./assets/font/fontawesome-free-5.15.4/css/all.css"
+      href="./assets/font/fontawesome-free-5.15.4-web/css/all.css"
     />
   </head>
   <body>
     <main class="wrapper">
       <img src="./assets/images/vy.jpg" alt="" class="img" />
       <header class="header" id="header">
-        <h3 class="header__title">Lần cuối</h3>
-        <h4 class="header__song-author">Ngọt</h4>
+        <h3 class="header__title">Test</h3>
+        <h4 class="header__song-author">test</h4>
       </header>
-      <div class="body" id="body">
-        <!-- <button class="btn prev-btn"></button>
-        <button class="btn play-btn"></button>
-        <button class="btn next-btn">
-          <i class="btn-icon fas fa-step-forward"></i>
-        </button> -->
-        <audio controls class="audio">
-          <source src="./assets/musics/Lan Cuoi.mp3" type="audio/mp3" />
-          Your browser does not support the audio element.
-        </audio>
+      <div class="player" id="player">
+        <div class="btn prev-btn"><i class="fas fa-arrow-right"></i></div>
+        <div class="btn play-btn">
+          <i class="fas fa-pause icon icon-pause"></i>
+          <i class="fas fa-play icon icon-play"></i>
+        </div>
+        <div class="btn next-btn"><i class="fas fa-arrow-right"></i></div>
+        <audio src="" class="audio"></audio>
         <script src="./assets/script.js"></script>
       </div>
     </main>
