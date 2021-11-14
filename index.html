@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <link rel="stylesheet" href="./assets/css/base.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
+    <link
+      rel="stylesheet"
+      href="https://necolas.github.io/normalize.css/8.0.1/normalize.css"
+    />
+    <link
+      rel="stylesheet"
+      href="./assets/font/fontawesome-free-5.15.4/css/all.css"
+    />
+  </head>
+  <body>
+    <main class="wrapper">
+      <img src="./assets/images/vy.jpg" alt="" class="img" />
+      <header class="header" id="header">
+        <h3 class="header__title">Lần cuối</h3>
+        <h4 class="header__song-author">Ngọt</h4>
+      </header>
+      <div class="body" id="body">
+        <!-- <button class="btn prev-btn"></button>
+        <button class="btn play-btn"></button>
+        <button class="btn next-btn">
+          <i class="btn-icon fas fa-step-forward"></i>
+        </button> -->
+        <audio controls class="audio">
+          <source src="./assets/musics/Lan Cuoi.mp3" type="audio/mp3" />
+          Your browser does not support the audio element.
+        </audio>
+        <script src="./assets/script.js"></script>
+      </div>
+    </main>
+  </body>
+</html>
