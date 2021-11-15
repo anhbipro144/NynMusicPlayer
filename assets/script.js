@@ -60,6 +60,34 @@ const app = {
       message: "Love u til i die  ｡◕‿◕｡",
       imgPath: "./assets/images/mascara.jpg",
     },
+    {
+      name: "Đợi",
+      author: "Vũ",
+      path: "./assets/musics/doi.mp3",
+      message: "Love u til i die  ｡◕‿◕｡",
+      imgPath: "./assets/images/doi-vu.jpg",
+    },
+    {
+      name: "Đông kiếm em",
+      author: "Vũ",
+      path: "./assets/musics/dong kiem em.mp3",
+      message: "Love u til i die  ｡◕‿◕｡",
+      imgPath: "./assets/images/dong kiem em.jpg",
+    },
+    {
+      name: "Hành tinh song song",
+      author: "Vũ",
+      path: "./assets/musics/hanh tinh song song.mp3",
+      message: "Love u til i die  ｡◕‿◕｡",
+      imgPath: "./assets/images/hanh tinh song song.jpg",
+    },
+    {
+      name: "Mùa mưa ngâu nằm cạnh",
+      author: "Vũ",
+      path: "./assets/musics/mua mua ngau nam canh.mp3",
+      message: "Love u til i die  ｡◕‿◕｡",
+      imgPath: "./assets/images/mua mua ngau nam canh.jpg",
+    },
   ],
   getCurrentSong: function () {
     return this.songs[this.currentIndex];
@@ -95,7 +123,6 @@ const app = {
 
     // Next song========================================================================
     nextBtn.onclick = function () {
-      console.log(_this.currentIndex, _this.songs.length);
       _this.nextSong();
       audio.play();
     };
@@ -117,8 +144,13 @@ const app = {
 
     // Repeat song========================================================================
     replayBtn.onclick = function () {
-      isRepeat = true;
-      replayBtn.classList.toggle("pressed");
+      if (isRepeat) {
+        isRepeat = false;
+        replayBtn.classList.toggle("pressed");
+      } else {
+        isRepeat = true;
+        replayBtn.classList.toggle("pressed");
+      }
     };
 
     //Audio Status===============================================================
