@@ -90,6 +90,13 @@ const app = {
       message: "Mùa mưa ngâu chui xuống nách nằm (๑•́ ₃ •̀๑)",
       imgPath: "./assets/images/mua mua ngau nam canh.jpg",
     },
+    {
+      name: "Em là mưa",
+      author: "Vũ",
+      path: "./assets/musics/em la mua.mp3",
+      message: "Mùa mưa ngâu chui xuống nách nằm (๑•́ ₃ •̀๑)",
+      imgPath: "./assets/images/em la mua.jpg",
+    },
   ],
 
   getCurrentSong: function () {
