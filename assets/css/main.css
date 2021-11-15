@@ -180,13 +180,13 @@ body {
   position: absolute;
   transform: translateY(-25%);
   border: 3px solid rgba(255, 131, 57, 0.5);
+  box-shadow: 3px 3px 10px rgba(255, 131, 57, 0.5);
   left: -23px;
   top: 0;
   width: 100px;
   height: 100px;
   border-radius: 50%;
   overflow: hidden;
-  box-shadow: 3px 3px 10px rgba(255, 131, 57, 0.5);
   z-index: 2;
 }
 
@@ -238,11 +238,16 @@ body {
   border-radius: 50%;
 }
 
-.icon-replay {
+.icon-replay,
+.icon-random {
   transition: color 0.2s linear;
 }
 
 .replay-btn.pressed .icon-replay {
+  color: red;
+}
+
+.random-btn.pressed .icon-random {
   color: red;
 }
 

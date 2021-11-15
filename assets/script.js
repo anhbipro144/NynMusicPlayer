@@ -13,6 +13,7 @@ const message = $(".message");
 const cdImg = $(".cd-img");
 const replayBtn = $(".replay-btn");
 const progress = $("#progress");
+const randomBtn = $(".random-btn");
 
 // ===========================================================================
 
@@ -90,6 +91,7 @@ const app = {
       imgPath: "./assets/images/mua mua ngau nam canh.jpg",
     },
   ],
+
   getCurrentSong: function () {
     return this.songs[this.currentIndex];
   },
@@ -116,11 +118,16 @@ const app = {
     }
   },
 
+  randomSong: function () {
+    return Math.floor(Math.random() * this.songs.length);
+  },
+
   // Handle Events=================================================================
   handleEvents: function () {
     const _this = this;
     let isPlay = false;
     let isRepeat = false;
+    let isRandom = false;
 
     // Next song========================================================================
     nextBtn.onclick = function () {
@@ -136,7 +143,6 @@ const app = {
 
     //Play song========================================================================
     playBtn.onclick = function () {
-      console.log(progress);
       if (isPlay) {
         audio.pause();
       } else {
@@ -151,7 +157,21 @@ const app = {
         replayBtn.classList.toggle("pressed");
       } else {
         isRepeat = true;
+        isRandom = false;
+        randomBtn.classList.remove("pressed");
         replayBtn.classList.toggle("pressed");
+      }
+    };
+    // Random song ================================================================
+    randomBtn.onclick = function () {
+      if (isRandom) {
+        isRandom = false;
+        randomBtn.classList.toggle("pressed");
+      } else {
+        isRandom = true;
+        isRepeat = false;
+        replayBtn.classList.remove("pressed");
+        randomBtn.classList.toggle("pressed");
       }
     };
 
@@ -174,6 +194,9 @@ const app = {
     audio.onended = function () {
       if (isRepeat) {
         audio.play();
+      } else if (isRandom) {
+        _this.currentIndex = _this.randomSong();
+        nextBtn.click();
       } else {
         nextBtn.click();
       }
@@ -193,6 +216,7 @@ const app = {
     message.textContent = this.songs[this.currentIndex].message;
     cdImg.src = this.songs[this.currentIndex].imgPath;
   },
+
   // Start======================================================================
   start: function () {
     this.render();
