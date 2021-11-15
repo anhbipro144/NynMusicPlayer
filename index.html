@@ -31,13 +31,21 @@
         <h4 class="header__song-author">test</h4>
       </header>
       <div class="player" id="player">
-        <div class="btn prev-btn"><i class="fas fa-arrow-right"></i></div>
-        <div class="btn play-btn">
-          <i class="fas fa-pause icon icon-pause"></i>
-          <i class="fas fa-play icon icon-play"></i>
+        <div class="replay-btn btn"><i class="icon icon-replay fas fa-redo"></i></div>
+        <div class="cd-img-container"><img src="./assets/images/lancuoi.jpg" alt="" class="cd-img"></div>
+        <div class="btn-container">
+          <div class="btn prev-btn">
+            <i class="icon fas fa-step-forward"></i></i>
+          </div>
+          <div class="btn play-btn">
+            <i class="fas fa-pause icon icon-pause"></i>
+            <i class="fas fa-play icon icon-play"></i>
+          </div>
+          <div class="btn next-btn">
+            <i class="icon fas fa-step-forward"></i></i>
+          </div>
         </div>
-        <div class="btn next-btn"><i class="fas fa-arrow-right"></i></div>
-        <audio src="" class="audio"></audio>
+        <audio src="" class="audio" autoplay></audio>
         <script src="./assets/script.js"></script>
       </div>
     </main>

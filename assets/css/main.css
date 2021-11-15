@@ -1,6 +1,10 @@
 body,
 .player,
-.header {
+.header,
+.btn-container,
+.btn,
+.cd-img-container,
+.replay-btn {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -18,6 +22,7 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
+  border: 2px solid rgb(250, 217, 167);
   width: 400px;
   height: 700px;
   margin: 20px 0;
@@ -77,12 +82,15 @@ body {
 
 .player {
   position: absolute;
-  top: 55%;
-  left: 0;
-  width: 100%;
-  height: 100px;
+  top: 58%;
+  width: 70%;
+  height: 60px;
+  box-shadow: 3px 3px 20px rgba(255, 131, 57, 0.5);
+  align-self: center;
   justify-content: space-around;
   align-items: center;
+  background-color: rgba(255, 131, 57, 0.5);
+  border-radius: 20px;
 }
 
 .player .icon-pause {
@@ -98,14 +106,80 @@ body {
 }
 
 .btn {
+  cursor: pointer;
   width: 30px;
   height: 30px;
-  font-size: 3rem;
+  font-size: 1.6rem;
   color: orange;
+  opacity: 1;
+  margin: auto;
+}
+
+.btn-container {
+  position: absolute;
+  justify-content: space-around;
+  align-items: center;
+  width: 150px;
+  height: 50px;
+  right: 10px;
+}
+
+.cd-img-container {
+  position: absolute;
+  transform: translateY(-25%);
+  border: 3px solid rgba(255, 131, 57, 0.5);
+  left: -23px;
+  top: 0;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  overflow: hidden;
+  box-shadow: 3px 3px 10px rgba(255, 131, 57, 0.5);
+}
+
+.cd-img {
+  width: inherit;
+  animation: spin 3s linear infinite forwards;
+  animation-play-state: paused;
+}
+
+.playing .cd-img {
+  animation-play-state: running;
 }
 
 .prev-btn {
-  font-size: 3rem;
   color: orange;
   transform: rotate(180deg);
+}
+
+.play-btn {
+  font-size: 2.4rem;
+}
+
+.icon {
+  align-self: center;
+  color: orange;
+}
+.replay-btn {
+  position: absolute;
+  font-size: 1.2rem;
+  top: 30px;
+  left: 100px;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  transition: background 0.2s ease-in;
+}
+
+.replay-btn.pressed {
+  background-color: rgba(255, 131, 57, 0.2);
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
