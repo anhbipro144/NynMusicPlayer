@@ -27,13 +27,22 @@
       <img src="./assets/images/vy.jpg" alt="" class="img" />
       <header class="header" id="header">
         <h3 class="message"><3</h3>
-        <h3 class="header__title">Test</h3>
-        <h4 class="header__song-author">test</h4>
+        <!-- <h3 class="header__title">Test</h3>
+        <h4 class="header__song-author">test</h4> -->
       </header>
       <div class="player" id="player">
-        <div class="replay-btn btn"><i class="icon icon-replay fas fa-redo"></i></div>
+        <div class="panel"></div>
+        <div class="title-container">
+          <h3 class="header__title">Test</h3>
+          <h4 class="header__song-author">test</h4>
+          <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">
+          <!-- <div class="progress-container">
+            <div class="progress"></div>
+          </div> -->
+        </div>
         <div class="cd-img-container"><img src="./assets/images/lancuoi.jpg" alt="" class="cd-img"></div>
         <div class="btn-container">
+          <div class="replay-btn btn"><i class="icon icon-replay fas fa-redo"></i></div>
           <div class="btn prev-btn">
             <i class="icon fas fa-step-forward"></i></i>
           </div>
@@ -44,6 +53,7 @@
           <div class="btn next-btn">
             <i class="icon fas fa-step-forward"></i></i>
           </div>
+          <div class="random-btn btn"><i class="icon icon-random fas fa-random"></i></div>
         </div>
         <audio src="" class="audio" autoplay></audio>
         <script src="./assets/script.js"></script>

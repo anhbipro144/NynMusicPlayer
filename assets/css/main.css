@@ -4,7 +4,7 @@ body,
 .btn-container,
 .btn,
 .cd-img-container,
-.replay-btn {
+.title-container {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -43,17 +43,10 @@ body {
   align-content: center;
 }
 
-.header__title,
-.header__song-author,
 .message {
   align-self: center;
   color: orange;
   z-index: 10;
-  padding-top: 150px;
-  position: absolute;
-}
-
-.message {
   padding-top: 50px;
   position: absolute;
   top: 1%;
@@ -62,15 +55,74 @@ body {
   font-family: "Praise", cursive;
 }
 
+.header__title,
+.header__song-author {
+  color: white;
+  z-index: 0;
+  align-self: center;
+  display: inline-block;
+  margin-bottom: 15px;
+}
+
+.title-container {
+  position: absolute;
+  justify-content: space-around;
+  background-color: rgba(170, 233, 233, 0.329);
+  box-shadow: 0 -10px 10px rgba(255, 131, 57, 0.3);
+  width: 184px;
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+  height: 50px;
+  top: 0;
+  opacity: 0;
+  right: 6%;
+  z-index: 0;
+  transition: transform 0.2s linear, opacity 0.2s linear;
+}
+
+.playing .title-container {
+  transform: translateY(-100%);
+  opacity: 1;
+}
+
 .header__title {
-  top: 30%;
-  font-size: 1.6rem;
+  font-size: 1.2rem;
 }
 
 .header__song-author {
-  font-size: 1.2rem;
+  font-size: 1rem;
   opacity: 0.7;
-  top: 33%;
+}
+
+.progress {
+  -webkit-appearance: none;
+  position: absolute;
+  top: 70%;
+  width: 80%;
+  height: 5px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  border-radius: 10px;
+  -webkit-transition: 0.2s linear;
+  transition: opacity 0.2s linear;
+}
+
+.progress::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 10px;
+  height: 5px;
+  background: orange;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.progress::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04aa6d;
+  cursor: pointer;
 }
 
 /* Body */
@@ -86,6 +138,20 @@ body {
   align-items: center;
   background-color: rgba(255, 131, 57, 0.5);
   border-radius: 20px;
+  z-index: 10;
+}
+
+.panel {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: wheat;
+  border-radius: 20px;
+  box-shadow: 3px 3px 20px rgba(255, 131, 57, 0.5);
+  background-color: rgba(255, 131, 57, 0.9);
+  z-index: 1;
 }
 
 .player .icon-pause {
@@ -102,21 +168,12 @@ body {
 
 .btn {
   cursor: pointer;
+  color: orange;
+  margin: auto;
   width: 30px;
   height: 30px;
   font-size: 1.6rem;
-  color: orange;
   opacity: 1;
-  margin: auto;
-}
-
-.btn-container {
-  position: absolute;
-  justify-content: space-around;
-  align-items: center;
-  width: 150px;
-  height: 50px;
-  right: 10px;
 }
 
 .cd-img-container {
@@ -130,6 +187,7 @@ body {
   border-radius: 50%;
   overflow: hidden;
   box-shadow: 3px 3px 10px rgba(255, 131, 57, 0.5);
+  z-index: 2;
 }
 
 .cd-img {
@@ -138,36 +196,54 @@ body {
   animation-play-state: paused;
 }
 
+.btn-container {
+  position: absolute;
+  justify-content: space-around;
+  align-items: center;
+  width: 180px;
+  height: 50px;
+  right: 10px;
+}
+
 .playing .cd-img {
   animation-play-state: running;
+}
+
+.next-btn,
+.prev-btn {
+  font-size: 1.8rem;
 }
 
 .prev-btn {
   color: orange;
   transform: rotate(180deg);
+  z-index: 2;
 }
 
 .play-btn {
-  font-size: 2.4rem;
+  font-size: 2.8rem;
 }
 
 .icon {
   align-self: center;
-  color: orange;
+  color: white;
+  z-index: 4;
 }
 .replay-btn {
-  position: absolute;
   font-size: 1.2rem;
   top: 30px;
   left: 100px;
   width: 25px;
   height: 25px;
   border-radius: 50%;
-  transition: background 0.2s ease-in;
 }
 
-.replay-btn.pressed {
-  background-color: rgba(255, 131, 57, 0.2);
+.icon-replay {
+  transition: color 0.2s linear;
+}
+
+.replay-btn.pressed .icon-replay {
+  color: red;
 }
 
 @keyframes spin {

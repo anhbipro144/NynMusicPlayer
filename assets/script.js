@@ -12,6 +12,7 @@ const player = $(".player");
 const message = $(".message");
 const cdImg = $(".cd-img");
 const replayBtn = $(".replay-btn");
+const progress = $("#progress");
 
 // ===========================================================================
 
@@ -135,6 +136,7 @@ const app = {
 
     //Play song========================================================================
     playBtn.onclick = function () {
+      console.log(progress);
       if (isPlay) {
         audio.pause();
       } else {
@@ -153,21 +155,33 @@ const app = {
       }
     };
 
+    // Seek=========================================================================
+    progress.onchange = function (e) {
+      audio.currentTime = (audio.duration / 100) * e.target.value;
+    };
+
     //Audio Status===============================================================
     audio.onpause = function () {
       isPlay = false;
       player.classList.remove("playing");
     };
+
     audio.onplay = function () {
       isPlay = true;
       player.classList.add("playing");
     };
+
     audio.onended = function () {
       if (isRepeat) {
         audio.play();
       } else {
         nextBtn.click();
       }
+    };
+
+    audio.ontimeupdate = function () {
+      const currentProgress = (audio.currentTime / audio.duration) * 100;
+      progress.value = currentProgress;
     };
   },
 
