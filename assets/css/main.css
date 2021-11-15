@@ -134,7 +134,7 @@ body {
 
 .cd-img {
   width: inherit;
-  animation: spin 3s linear infinite forwards;
+  animation: spin 6s linear infinite forwards;
   animation-play-state: paused;
 }
 
