@@ -14,6 +14,10 @@ const cdImg = $(".cd-img");
 const replayBtn = $(".replay-btn");
 const progress = $("#progress");
 const randomBtn = $(".random-btn");
+const songPicture = $(".song-picture");
+const playlist = $(".playlist");
+const playListContainer = $(".playlist__container");
+const toggleButton = $(".toggle-button");
 
 // ===========================================================================
 
@@ -94,8 +98,15 @@ const app = {
       name: "Em là mưa",
       author: "Vũ",
       path: "./assets/musics/em la mua.mp3",
-      message: "Mùa mưa ngâu chui xuống nách nằm (๑•́ ₃ •̀๑)",
+      message: "Còn em là của anh ^^",
       imgPath: "./assets/images/em la mua.jpg",
+    },
+    {
+      name: "Blue Tequila",
+      author: "Táo",
+      path: "./assets/musics/tequilla.mp3",
+      message: "Iu em lam81mm <33",
+      imgPath: "./assets/images/tequila.jpg",
     },
   ],
 
@@ -125,6 +136,18 @@ const app = {
     }
   },
 
+  // Scroll to active song
+  scrollToSong: function () {
+    return setTimeout(
+      $(".playlist__song.active").scrollIntoView({
+        behavior: "smooth",
+        block: "center",
+      }),
+      500
+    );
+  },
+
+  // Random song
   randomSong: function () {
     return Math.floor(Math.random() * this.songs.length);
   },
@@ -140,12 +163,16 @@ const app = {
     nextBtn.onclick = function () {
       _this.nextSong();
       audio.play();
+      _this.loadPlaylist();
+      _this.scrollToSong();
     };
 
     // Prev song========================================================================
     prevBtn.onclick = function () {
       _this.prevSong();
       audio.play();
+      _this.loadPlaylist();
+      _this.scrollToSong();
     };
 
     //Play song========================================================================
@@ -184,7 +211,24 @@ const app = {
 
     // Seek=========================================================================
     progress.onchange = function (e) {
-      audio.currentTime = (audio.duration / 100) * e.target.value;
+      let now = (audio.duration / 100) * e.target.value;
+      audio.currentTime = now;
+    };
+
+    // Playlist toggle
+    toggleButton.onclick = function () {
+      playlist.classList.toggle("active");
+      toggleButton.classList.toggle("active");
+    };
+
+    // Click song
+    playListContainer.onclick = function (e) {
+      let songNode = e.target.closest(".playlist__song:not(.active)");
+      if (songNode) {
+        _this.currentIndex = Number(songNode.getAttribute("data-index"));
+        _this.loadPlaylist();
+        _this.render();
+      }
     };
 
     //Audio Status===============================================================
@@ -215,6 +259,23 @@ const app = {
     };
   },
 
+  // Load playlist
+  loadPlaylist: function () {
+    let current = this.currentIndex;
+    let html = this.songs.map(function (elem, index) {
+      return `<div data-index= ${index} class="playlist__song ${index === current ? "active" : ""}">
+        <img src='${elem.imgPath}' alt="" class="playlist__song-img">
+        <div class="playlist__song-info">
+          <h3 class="playlist__song-title">${elem.name}
+          </h3>
+          <h4 class="playlist__song-author">${elem.author}</h4>
+        </div>
+      </div>`;
+    });
+
+    playListContainer.innerHTML = html.join("");
+  },
+
   // Render songs ================================================================
   render: function () {
     title.textContent = this.songs[this.currentIndex].name;
@@ -222,10 +283,12 @@ const app = {
     audio.src = this.songs[this.currentIndex].path;
     message.textContent = this.songs[this.currentIndex].message;
     cdImg.src = this.songs[this.currentIndex].imgPath;
+    songPicture.src = this.songs[this.currentIndex].imgPath;
   },
 
   // Start======================================================================
   start: function () {
+    this.loadPlaylist();
     this.render();
     this.handleEvents();
   },

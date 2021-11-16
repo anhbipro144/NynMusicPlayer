@@ -24,18 +24,59 @@
   </head>
   <body>
     <main class="wrapper">
+
+      <!-- Toggle buttoon -->
+
+      <div class="toggle-button">
+        <div class="toggle-button__inner" ></div>
+      </div>
+
+      <!-- Playlist -->
+      <div class="playlist">
+        <div class="playlist__header">
+          PLAYLIST
+        </div>
+        <div class="playlist__container">
+        
+          </div>
+        </div>
+        
+      </div>
+
+
+      <!-- Message -->
+
       <img src="./assets/images/vy.jpg" alt="" class="img" />
       <header class="header" id="header">
         <h3 class="message"><3</h3>       
       </header>
+
+      <!-- Player -->
+
       <div class="player" id="player">
-        <div class="panel"></div>
-        <div class="title-container">
-          <h3 class="header__title">Test</h3>
-          <h4 class="header__song-author">test</h4>
+          <div class="panel"></div>
+
+        <!-- Title Container -->
+
+          <div class="title-container">
+          <div class="song-picture-container">
+            <img  src="./assets/images/lancuoi.jpg" alt="" class="song-picture">
+          </div>
+          <div class="song-info-container">
+            <h3 class="header__title"></h3>
+            <h4 class="header__song-author"></h4>
+          </div>
           <input id="progress" class="progress" type="range" value="0" step="1" min="0" max="100">   
         </div>
+
+        <!-- CD -->
+
+
         <div class="cd-img-container"><img src="./assets/images/lancuoi.jpg" alt="" class="cd-img"></div>
+
+        <!-- Button Container -->
+
+
         <div class="btn-container">
           <div class="replay-btn btn"><i class="icon icon-replay fas fa-redo"></i></div>
           <div class="btn prev-btn">
@@ -50,6 +91,9 @@
           </div>
           <div class="random-btn btn"><i class="icon icon-random fas fa-random"></i></div>
         </div>
+
+        <!-- Audio -->
+
         <audio src="" class="audio" autoplay></audio>
         <script src="./assets/script.js"></script>
       </div>

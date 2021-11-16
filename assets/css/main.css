@@ -4,7 +4,14 @@ body,
 .btn-container,
 .btn,
 .cd-img-container,
-.title-container {
+.title-container,
+.song-picture-container,
+.song-info-container,
+.playlist,
+.playlist__song,
+.playlist__song-info,
+.playlist__container,
+.toggle-button {
   display: flex;
   justify-content: center;
   align-content: center;
@@ -22,7 +29,7 @@ body {
   flex-direction: column;
   position: relative;
   overflow: hidden;
-  border: 2px solid rgb(250, 217, 167);
+  border: 2px solid rgb(247, 128, 55);
   width: 400px;
   height: 700px;
   margin: 20px 0;
@@ -36,6 +43,148 @@ body {
   left: 0;
   width: 100%;
 }
+
+/* Toggle button */
+
+.toggle-button {
+  position: absolute;
+  align-items: center;
+  flex-direction: column;
+  cursor: pointer;
+  width: 50px;
+  height: 50px;
+  top: 10px;
+  right: 10px;
+  z-index: 10;
+}
+
+.toggle-button__inner {
+  width: 30px;
+  height: 3px;
+  background: #fff;
+  border-radius: 5px;
+  transition: transform 0.3s linear, background 0.3s linear;
+}
+
+.toggle-button__inner::before,
+.toggle-button__inner::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 3px;
+  background-color: white;
+  border-radius: 5px;
+  transition: transform 0.3s linear;
+}
+
+.toggle-button__inner::before {
+  transform: translateY(-10px);
+}
+.toggle-button__inner::after {
+  transform: translateY(10px);
+}
+
+.toggle-button.active .toggle-button__inner {
+  background-color: transparent;
+  transform: translateX(-50%);
+}
+
+.toggle-button.active .toggle-button__inner::before {
+  transform: rotate(45deg) translate(10px, -10px);
+}
+.toggle-button.active .toggle-button__inner::after {
+  transform: rotate(-45deg) translate(10px, 10px);
+}
+
+/* Playlist */
+
+.playlist {
+  position: absolute;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background-color: rgb(240, 132, 45);
+  width: 50%;
+  height: 100%;
+  z-index: 100;
+  margin-top: 22px;
+  gap: 10px;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease-in-out, opacity 0.3s linear;
+}
+
+.playlist.active {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.playlist__header {
+  font-family: Arial, Helvetica, sans-serif;
+  border-top-left-radius: 18px;
+  color: white;
+  height: 40px;
+  font-size: 3rem;
+  font-weight: 900;
+  padding-top: 10px;
+  cursor: default;
+}
+
+.playlist__container {
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  padding-top: 130px;
+  width: 100%;
+  height: 100%;
+  gap: 5px;
+}
+
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: white;
+  border-radius: 5px;
+}
+
+.playlist__song {
+  justify-content: flex-start;
+  align-items: center;
+  cursor: pointer;
+  gap: 10px;
+  min-height: 60px;
+  width: 96%;
+  border-radius: 3px;
+  background-color: white;
+}
+
+.playlist__song.active {
+  background-color: rgba(133, 168, 157, 0.842);
+  color: white;
+  box-shadow: 3px 3px 10px orangered;
+}
+
+.playlist__song-info {
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding-bottom: 16px;
+}
+
+.playlist__song-author {
+  opacity: 0.7;
+}
+
+.playlist__song-img {
+  width: 40px;
+  height: 40px;
+  margin-left: 10px;
+  border-radius: 4px;
+}
+
+/* Message */
 
 .header {
   flex-direction: column;
@@ -55,13 +204,14 @@ body {
   font-family: "Praise", cursive;
 }
 
+/* Title */
+
 .header__title,
 .header__song-author {
   color: white;
   z-index: 0;
   align-self: center;
   display: inline-block;
-  margin-bottom: 15px;
 }
 
 .title-container {
@@ -80,9 +230,33 @@ body {
   transition: transform 0.2s linear, opacity 0.2s linear;
 }
 
+.song-picture-container {
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+  background-color: black;
+  margin-top: 6px;
+  position: absolute;
+  left: 20px;
+}
+
+.song-picture {
+  width: inherit;
+  align-self: center;
+}
+
 .playing .title-container {
   transform: translateY(-100%);
   opacity: 1;
+}
+
+.song-info-container {
+  flex-direction: column;
+  align-items: flex-start;
+  position: absolute;
+  top: 6px;
+  right: 18px;
 }
 
 .header__title {
@@ -99,7 +273,7 @@ body {
   position: absolute;
   top: 70%;
   width: 80%;
-  height: 5px;
+  height: 2px;
   background: #d3d3d3;
   outline: none;
   opacity: 0.7;
@@ -113,7 +287,7 @@ body {
   appearance: none;
   width: 10px;
   height: 5px;
-  background: orange;
+  background: rgb(247, 151, 91);
   cursor: pointer;
   border-radius: 4px;
 }
