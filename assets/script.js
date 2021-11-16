@@ -105,8 +105,8 @@ const app = {
       name: "Blue Tequila",
       author: "Táo",
       path: "./assets/musics/tequilla.mp3",
-      message: "Iu em lam81mm <33",
-      imgPath: "./assets/images/tequila.jpg",
+      message: "Iu em lắmm <33",
+      imgPath: "./assets/images/tequilla2.jpg",
     },
   ],
 
