@@ -107,7 +107,6 @@ body {
   width: 50%;
   height: 100%;
   z-index: 100;
-  margin-top: 22px;
   gap: 10px;
   opacity: 0;
   transform: translateX(-100%);
