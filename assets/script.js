@@ -18,6 +18,8 @@ const songPicture = $(".song-picture");
 const playlist = $(".playlist");
 const playListContainer = $(".playlist__container");
 const toggleButton = $(".toggle-button");
+const wrapper = $(".wrapper");
+const body = $("body");
 
 // ===========================================================================
 
@@ -217,6 +219,7 @@ const app = {
 
     // Playlist toggle
     toggleButton.onclick = function () {
+      console.log("toggle clicked");
       playlist.classList.toggle("active");
       toggleButton.classList.toggle("active");
     };
@@ -228,6 +231,18 @@ const app = {
         _this.currentIndex = Number(songNode.getAttribute("data-index"));
         _this.loadPlaylist();
         _this.render();
+      }
+    };
+
+    body.onclick = function (e) {
+      const toggleInner = $(".toggle-button__inner");
+      console.log(playListContainer.contains(e.target));
+      if (
+        !playListContainer.contains(e.target) &&
+        e.target !== toggleButton &&
+        e.target !== toggleInner
+      ) {
+        console.log(1);
       }
     };
 
